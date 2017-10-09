@@ -1,8 +1,8 @@
 package jish;
 
 import org.apache.commons.io.FileUtils;
+import sx.blah.discord.handle.obj.IChannel;
 import sx.blah.discord.handle.obj.IMessage;
-import sx.blah.discord.util.EmbedBuilder;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,5 +38,17 @@ public class Util {
             e.printStackTrace();
             return Optional.empty();
         }
+    }
+
+    public static void sendMessage(IChannel channel, String message){
+        try {
+            channel.sendMessage(message);
+        } catch(Exception e){}
+    }
+
+    public static void deleteMessage(IMessage message) {
+        try {
+            message.delete();
+        } catch(Exception e) {}
     }
 }

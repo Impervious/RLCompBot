@@ -11,10 +11,7 @@ import sx.blah.discord.handle.impl.events.shard.DisconnectedEvent;
 import sx.blah.discord.handle.obj.*;
 import sx.blah.discord.util.*;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class RLCompBot {
 
@@ -75,7 +72,9 @@ public class RLCompBot {
                 if(msg.getChannel().getStringID().equals("338051063720443915") || msg.getChannel().getStringID().equals("348989205193555968")) {
                     try {
                         event.getAuthor().addRole(event.getGuild().getRoleByID(Roles.BRONZE.ID));
-                        sendMessage(msg.getChannel(), msg.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
+                        event.getAuthor().removeRole(event.getGuild().getRoleByID(Roles.UNRANKED.ID));
+                        Util.deleteMessage(msg);
+                        Util.sendMessage(msg.getChannel(), msg.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
                     } catch(Exception e) {
                         e.printStackTrace();
                     }
@@ -85,7 +84,9 @@ public class RLCompBot {
                 if(msg.getChannel().getStringID().equals("338051063720443915") || msg.getChannel().getStringID().equals("348989205193555968")) {
                     try {
                         event.getAuthor().addRole(event.getGuild().getRoleByID(Roles.SILVER.ID));
-                        sendMessage(msg.getChannel(), msg.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
+                        event.getAuthor().removeRole(event.getGuild().getRoleByID(Roles.UNRANKED.ID));
+                        Util.deleteMessage(msg);
+                        Util.sendMessage(msg.getChannel(), msg.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
                     } catch(Exception e) {
                         e.printStackTrace();
                     }
@@ -95,7 +96,9 @@ public class RLCompBot {
                 if(msg.getChannel().getStringID().equals("338051063720443915") || msg.getChannel().getStringID().equals("348989205193555968")) {
                     try {
                         event.getAuthor().addRole(event.getGuild().getRoleByID(Roles.GOLD.ID));
-                        sendMessage(msg.getChannel(), msg.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
+                        event.getAuthor().removeRole(event.getGuild().getRoleByID(Roles.UNRANKED.ID));
+                        Util.deleteMessage(msg);
+                        Util.sendMessage(msg.getChannel(), msg.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
                     } catch(Exception e) {
                         e.printStackTrace();
                     }
@@ -105,7 +108,9 @@ public class RLCompBot {
                 if(msg.getChannel().getStringID().equals("338051063720443915") || msg.getChannel().getStringID().equals("348989205193555968")) {
                     try {
                         event.getAuthor().addRole(event.getGuild().getRoleByID(Roles.PLATINUM.ID));
-                        sendMessage(msg.getChannel(), msg.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
+                        event.getAuthor().removeRole(event.getGuild().getRoleByID(Roles.UNRANKED.ID));
+                        Util.deleteMessage(msg);
+                        Util.sendMessage(msg.getChannel(), msg.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
                     } catch(Exception e) {
                         e.printStackTrace();
                     }
@@ -115,7 +120,9 @@ public class RLCompBot {
                 if(msg.getChannel().getStringID().equals("338051063720443915") || msg.getChannel().getStringID().equals("348989205193555968")) {
                     try {
                         event.getAuthor().addRole(event.getGuild().getRoleByID(Roles.DIAMOND.ID));
-                        sendMessage(msg.getChannel(), msg.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
+                        event.getAuthor().removeRole(event.getGuild().getRoleByID((Roles.UNRANKED.ID)));
+                        Util.deleteMessage(msg);
+                        Util.sendMessage(msg.getChannel(), msg.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
                     } catch(Exception e) {
                         e.printStackTrace();
                     }
@@ -125,7 +132,9 @@ public class RLCompBot {
                 if(msg.getChannel().getStringID().equals("338051063720443915") || msg.getChannel().getStringID().equals("348989205193555968")) {
                     try {
                         event.getAuthor().addRole(event.getGuild().getRoleByID(Roles.CHAMPION.ID));
-                        sendMessage(msg.getChannel(), msg.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
+                        event.getAuthor().removeRole(event.getGuild().getRoleByID(Roles.UNRANKED.ID));
+                        Util.deleteMessage(msg);
+                        Util.sendMessage(msg.getChannel(), msg.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
                     } catch(Exception e) {
                         e.printStackTrace();
                     }
@@ -135,11 +144,64 @@ public class RLCompBot {
                 if(msg.getChannel().getStringID().equals("338051063720443915") || msg.getChannel().getStringID().equals("348989205193555968")) {
                     try {
                         event.getAuthor().addRole(event.getGuild().getRoleByID(Roles.GRAND_CHAMPION.ID));
-                        sendMessage(msg.getChannel(), msg.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
+                        event.getAuthor().removeRole(event.getGuild().getRoleByID(Roles.UNRANKED.ID));
+                        Util.deleteMessage(msg);
+                        Util.sendMessage(msg.getChannel(), msg.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
                     } catch(Exception e) {
                         e.printStackTrace();
                     }
                 }
+            }
+
+            if(cmd.equalsIgnoreCase("pc")) {
+                if(msg.getChannel().getStringID().equals("366773418822991873")) {
+                    try {
+                        Util.deleteMessage(msg);
+                        event.getAuthor().addRole(event.getGuild().getRoleByID(Roles.PC.ID));
+                        Util.sendMessage(msg.getChannel(), msg.getAuthor() + ", you are now in the PC group. Let a staff member know if you have any questions.");
+                    } catch(Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            if(cmd.equalsIgnoreCase("xb1") || cmd.equalsIgnoreCase("xbox") || cmd.equalsIgnoreCase("xbone")) {
+                if(msg.getChannel().getStringID().equals("366773418822991873")) {
+                    try {
+                        event.getAuthor().addRole(event.getGuild().getRoleByID(Roles.XB1.ID));
+                        Util.deleteMessage(msg);
+                        Util.sendMessage(msg.getChannel(), msg.getAuthor() + ", you are now in the Xbox group. Let a staff member know if you have any questions.");
+                    } catch(Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            if(cmd.equalsIgnoreCase("ps4") || cmd.equalsIgnoreCase("playstation") || cmd.equalsIgnoreCase("ps")) {
+                if(msg.getChannel().getStringID().equals("366773418822991873")) {
+                    try {
+                        event.getAuthor().addRole(event.getGuild().getRoleByID(Roles.XB1.ID));
+                        Util.deleteMessage(msg);
+                        Util.sendMessage(msg.getChannel(), msg.getAuthor() + ", you are now in the PlayStation group. Let a staff member know if you have any questions.");
+                    } catch(Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            if(cmd.equalsIgnoreCase("platforms")) {
+                EmbedBuilder builder = new EmbedBuilder();
+
+                builder.withAuthorName("RLCompBot");
+                builder.withAuthorIcon("https://i.imgur.com/QRVYlDC.png");
+                builder.appendField("Available Platforms", "Platforms:", false);
+                builder.appendField("!pc", "Grants you the PC group", true);
+                builder.appendField("!xb1 | !xbox | !xbone", "Grants you the Xbox group", false);
+                builder.appendField("!ps4 | !playstation | !ps", "Grants you the PS4 group", false);
+                builder.withColor(255, 30, 229);
+                builder.withTimestamp(System.currentTimeMillis());
+
+                RequestBuffer.request(() -> event.getChannel().sendMessage(builder.build()));
             }
 
             if(cmd.equalsIgnoreCase("ranks")) {
@@ -160,26 +222,14 @@ public class RLCompBot {
         }
     }
 
-    public static void sendMessage(IChannel channel, String message){
-        try {
-            channel.sendMessage(message);
-        } catch(Exception e){}
-    }
-
-    public static void deleteMessage(IMessage message) {
-        try {
-            message.delete();
-        } catch(Exception e) {}
-    }
-
     @EventSubscriber
     public void userJoined(UserJoinEvent e) throws DiscordException {
         System.out.println("User joined");
         IUser joinGuy = e.getUser();
         String user = e.getUser().getStringID();
         String server = e.getGuild().getStringID();
-        sendMessage(e.getClient().getChannelByID(Long.parseLong("338051063720443915")), "Welcome to the RL Competitive server " + joinGuy.toString() + "!");
-        sendMessage(e.getClient().getChannelByID(Long.parseLong("338051063720443915")), "To get started on the server please do !ranks and do the command that corresponds to your competitive rank!");
+        Util.sendMessage(e.getClient().getChannelByID(Long.parseLong("338051063720443915")), "Welcome to the RL Competitive server " + joinGuy.toString() + "!");
+        Util.sendMessage(e.getClient().getChannelByID(Long.parseLong("338051063720443915")), "To get started on the server please do !ranks and do the command that corresponds to your competitive rank!");
     }
 
     @EventSubscriber
