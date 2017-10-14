@@ -65,7 +65,9 @@ public class RLCompBot {
         IMessage msg = event.getMessage();
         String text = msg.getContent();
 
-        if (text.startsWith("!")) {
+
+
+        /*if (text.startsWith("!")) {
             String cmd = text.substring(1).split(" ")[0].toLowerCase();
 
             if(cmd.equalsIgnoreCase("bronze")) {
@@ -224,7 +226,7 @@ public class RLCompBot {
 
                 RequestBuffer.request(() -> event.getChannel().sendMessage(builder.build()));
             }
-        }
+        }*/
     }
 
     @EventSubscriber
