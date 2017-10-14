@@ -85,7 +85,7 @@ public class RLCompBot {
                     try {
                         event.getAuthor().addRole(event.getGuild().getRoleByID(Roles.SILVER.ID));
                         event.getAuthor().removeRole(event.getGuild().getRoleByID(Roles.UNRANKED.ID));
-                        Util.deleteMessage(msg);
+                        event.getAuthor().removeRole(event.getGuild().getRoleByID(Roles.BRONZE.ID));
                         Util.sendMessage(msg.getChannel(), msg.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
                     } catch(Exception e) {
                         e.printStackTrace();
@@ -97,6 +97,7 @@ public class RLCompBot {
                     try {
                         event.getAuthor().addRole(event.getGuild().getRoleByID(Roles.GOLD.ID));
                         event.getAuthor().removeRole(event.getGuild().getRoleByID(Roles.UNRANKED.ID));
+                        event.getAuthor().removeRole(event.getGuild().getRoleByID(Roles.SILVER.ID));
                         Util.deleteMessage(msg);
                         Util.sendMessage(msg.getChannel(), msg.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
                     } catch(Exception e) {
@@ -109,6 +110,7 @@ public class RLCompBot {
                     try {
                         event.getAuthor().addRole(event.getGuild().getRoleByID(Roles.PLATINUM.ID));
                         event.getAuthor().removeRole(event.getGuild().getRoleByID(Roles.UNRANKED.ID));
+                        event.getAuthor().removeRole(event.getGuild().getRoleByID(Roles.GOLD.ID));
                         Util.deleteMessage(msg);
                         Util.sendMessage(msg.getChannel(), msg.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
                     } catch(Exception e) {
@@ -121,6 +123,7 @@ public class RLCompBot {
                     try {
                         event.getAuthor().addRole(event.getGuild().getRoleByID(Roles.DIAMOND.ID));
                         event.getAuthor().removeRole(event.getGuild().getRoleByID((Roles.UNRANKED.ID)));
+                        event.getAuthor().removeRole(event.getGuild().getRoleByID(Roles.PLATINUM.ID));
                         Util.deleteMessage(msg);
                         Util.sendMessage(msg.getChannel(), msg.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
                     } catch(Exception e) {
@@ -133,6 +136,7 @@ public class RLCompBot {
                     try {
                         event.getAuthor().addRole(event.getGuild().getRoleByID(Roles.CHAMPION.ID));
                         event.getAuthor().removeRole(event.getGuild().getRoleByID(Roles.UNRANKED.ID));
+                        event.getAuthor().removeRole(event.getGuild().getRoleByID(Roles.DIAMOND.ID));
                         Util.deleteMessage(msg);
                         Util.sendMessage(msg.getChannel(), msg.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
                     } catch(Exception e) {
@@ -145,6 +149,7 @@ public class RLCompBot {
                     try {
                         event.getAuthor().addRole(event.getGuild().getRoleByID(Roles.GRAND_CHAMPION.ID));
                         event.getAuthor().removeRole(event.getGuild().getRoleByID(Roles.UNRANKED.ID));
+                        event.getAuthor().removeRole(event.getGuild().getRoleByID(Roles.CHAMPION.ID));
                         Util.deleteMessage(msg);
                         Util.sendMessage(msg.getChannel(), msg.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
                     } catch(Exception e) {

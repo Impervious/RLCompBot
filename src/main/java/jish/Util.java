@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public class Util {
 
-    public static File botPath;
+    private static File botPath;
 
     static {
         try {
@@ -40,15 +40,15 @@ public class Util {
         }
     }
 
-    public static void sendMessage(IChannel channel, String message){
+    static void sendMessage(IChannel channel, String message){
         try {
             channel.sendMessage(message);
-        } catch(Exception e){}
+        } catch(Exception ignored){}
     }
 
-    public static void deleteMessage(IMessage message) {
+    static void deleteMessage(IMessage message) {
         try {
             message.delete();
-        } catch(Exception e) {}
+        } catch(Exception ignored) {}
     }
 }
