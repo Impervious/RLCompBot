@@ -7,10 +7,17 @@ import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.util.EmbedBuilder;
 import sx.blah.discord.util.RequestBuffer;
 
+import java.util.List;
+
 public class CommandPlatforms implements Command {
     @Override
     public String getName() {
         return "platforms";
+    }
+
+    @Override
+    public List<String> getAliases() {
+        return null;
     }
 
     @Override
