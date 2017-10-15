@@ -23,8 +23,20 @@ public class CommandTest implements Command {
     @Override
     public void execute(RLCompBot bot, IDiscordClient client, String[] args, IGuild guild, IMessage message, boolean isPrivate) {
         if(!isPrivate) {
-            if(message.getAuthor().getStringID().equals("73463573900173312")) {
-                Util.sendMessage(message.getChannel(), "test");
+            try {
+                if(args.length == 1) {
+                    if (args[0].equalsIgnoreCase("wow")) {
+                        Util.sendMessage(message.getChannel(), "wow it worked");
+                    } else {
+                        if (message.getAuthor().getStringID().equals("73463573900173312")) {
+                            Util.sendMessage(message.getChannel(), "test");
+                        }
+                    }
+                } else {
+                    Util.sendMessage(message.getChannel(), "finally");
+                }
+            } catch(Exception e) {
+                e.printStackTrace();
             }
         }
     }
