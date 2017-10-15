@@ -15,7 +15,9 @@ public class CommandTest implements Command {
     @Override
     public void execute(RLCompBot bot, IDiscordClient client, String[] args, IGuild guild, IMessage message, boolean isPrivate) {
         if(!isPrivate) {
-            Util.sendMessage(message.getChannel(), "test");
+            if(message.getAuthor().getStringID().equals("73463573900173312")) {
+                Util.sendMessage(message.getChannel(), "test");
+            }
         }
     }
 }

@@ -32,18 +32,24 @@ public class RLCompBot {
 
     public static void main(String[] args) throws Exception {
         bot = new RLCompBot();
-
-
     }
 
     public RLCompBot() {
+        registerCommand(new CommandRanks());
+        registerCommand(new CommandPlatforms());
+
+        registerCommand(new CommandPC());
+        registerCommand(new CommandXB1());
+        registerCommand(new CommandPS4());
+
         registerCommand(new CommandTest());
         registerCommand(new CommandBronze());
         registerCommand(new CommandSilver());
         registerCommand(new CommandGold());
         registerCommand(new CommandPlatinum());
-        registerCommand(new CommandTest());
-        registerCommand(new CommandTest());
+        registerCommand(new CommandDiamond());
+        registerCommand(new CommandChampion());
+
         registerCommand(new CommandTest());
 
         connect();
@@ -102,127 +108,7 @@ public class RLCompBot {
                 String[] argsArr = args.isEmpty() ? new String[0] : args.split(" ");
                 command.get().execute(bot, client, argsArr, guild, msg, isPrivate);
             }
-        }/*
-            if(cmd.equalsIgnoreCase("platinum") || cmd.equalsIgnoreCase("plat")) {
-                if(msg.getChannel().getStringID().equals("338051063720443915") || msg.getChannel().getStringID().equals("348989205193555968")) {
-                    try {
-                        event.getAuthor().addRole(event.getGuild().getRoleByID(Roles.PLATINUM.ID));
-                        event.getAuthor().removeRole(event.getGuild().getRoleByID(Roles.UNRANKED.ID));
-                        event.getAuthor().removeRole(event.getGuild().getRoleByID(Roles.GOLD.ID));
-                        Util.deleteMessage(msg);
-                        Util.sendMessage(msg.getChannel(), msg.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
-                    } catch(Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-            if(cmd.equalsIgnoreCase("diamond") || cmd.equalsIgnoreCase("dia") || cmd.equalsIgnoreCase("diam")) {
-                if(msg.getChannel().getStringID().equals("338051063720443915") || msg.getChannel().getStringID().equals("348989205193555968")) {
-                    try {
-                        event.getAuthor().addRole(event.getGuild().getRoleByID(Roles.DIAMOND.ID));
-                        event.getAuthor().removeRole(event.getGuild().getRoleByID((Roles.UNRANKED.ID)));
-                        event.getAuthor().removeRole(event.getGuild().getRoleByID(Roles.PLATINUM.ID));
-                        Util.deleteMessage(msg);
-                        Util.sendMessage(msg.getChannel(), msg.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
-                    } catch(Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-            if(cmd.equalsIgnoreCase("champion") || cmd.equalsIgnoreCase("champ")) {
-                if(msg.getChannel().getStringID().equals("338051063720443915") || msg.getChannel().getStringID().equals("348989205193555968")) {
-                    try {
-                        event.getAuthor().addRole(event.getGuild().getRoleByID(Roles.CHAMPION.ID));
-                        event.getAuthor().removeRole(event.getGuild().getRoleByID(Roles.UNRANKED.ID));
-                        event.getAuthor().removeRole(event.getGuild().getRoleByID(Roles.DIAMOND.ID));
-                        Util.deleteMessage(msg);
-                        Util.sendMessage(msg.getChannel(), msg.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
-                    } catch(Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-            if(cmd.equalsIgnoreCase("gc")) {
-                if(msg.getChannel().getStringID().equals("338051063720443915") || msg.getChannel().getStringID().equals("348989205193555968")) {
-                    try {
-                        event.getAuthor().addRole(event.getGuild().getRoleByID(Roles.GRAND_CHAMPION.ID));
-                        event.getAuthor().removeRole(event.getGuild().getRoleByID(Roles.UNRANKED.ID));
-                        event.getAuthor().removeRole(event.getGuild().getRoleByID(Roles.CHAMPION.ID));
-                        Util.deleteMessage(msg);
-                        Util.sendMessage(msg.getChannel(), msg.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
-                    } catch(Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-
-            if(cmd.equalsIgnoreCase("pc")) {
-                if(msg.getChannel().getStringID().equals("366773418822991873")) {
-                    try {
-                        Util.deleteMessage(msg);
-                        event.getAuthor().addRole(event.getGuild().getRoleByID(Roles.PC.ID));
-                        Util.sendMessage(msg.getChannel(), msg.getAuthor() + ", you are now in the PC group. Let a staff member know if you have any questions.");
-                    } catch(Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-
-            if(cmd.equalsIgnoreCase("xb1") || cmd.equalsIgnoreCase("xbox") || cmd.equalsIgnoreCase("xbone")) {
-                if(msg.getChannel().getStringID().equals("366773418822991873")) {
-                    try {
-                        event.getAuthor().addRole(event.getGuild().getRoleByID(Roles.XB1.ID));
-                        Util.deleteMessage(msg);
-                        Util.sendMessage(msg.getChannel(), msg.getAuthor() + ", you are now in the Xbox group. Let a staff member know if you have any questions.");
-                    } catch(Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-
-            if(cmd.equalsIgnoreCase("ps4") || cmd.equalsIgnoreCase("playstation") || cmd.equalsIgnoreCase("ps")) {
-                if(msg.getChannel().getStringID().equals("366773418822991873")) {
-                    try {
-                        event.getAuthor().addRole(event.getGuild().getRoleByID(Roles.XB1.ID));
-                        Util.deleteMessage(msg);
-                        Util.sendMessage(msg.getChannel(), msg.getAuthor() + ", you are now in the PlayStation group. Let a staff member know if you have any questions.");
-                    } catch(Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-
-            if(cmd.equalsIgnoreCase("platforms")) {
-                EmbedBuilder builder = new EmbedBuilder();
-
-                builder.withAuthorName("RLCompBot");
-                builder.withAuthorIcon("https://i.imgur.com/QRVYlDC.png");
-                builder.appendField("Available Platforms", "Platforms:", false);
-                builder.appendField("!pc", "Grants you the PC group", true);
-                builder.appendField("!xb1 | !xbox | !xbone", "Grants you the Xbox group", false);
-                builder.appendField("!ps4 | !playstation | !ps", "Grants you the PS4 group", false);
-                builder.withColor(255, 30, 229);
-                builder.withTimestamp(System.currentTimeMillis());
-
-                RequestBuffer.request(() -> event.getChannel().sendMessage(builder.build()));
-            }
-
-            if(cmd.equalsIgnoreCase("ranks")) {
-                EmbedBuilder builder = new EmbedBuilder();
-
-                builder.withAuthorName("RLCompBot");
-                builder.withAuthorIcon("https://i.imgur.com/QRVYlDC.png");
-                builder.appendField("Available Commands", "Ranks:", false);
-                builder.appendField("!bronze", "!silver", true);
-                builder.appendField("!gold", "!platinum | !plat", false);
-                builder.appendField("!diamond | !dia | !diam", "!champion | !champ", false);
-                builder.appendField("!gc", "Let a staff member know if you have any questions!", false);
-                builder.withColor(255, 30, 229);
-                builder.withTimestamp(System.currentTimeMillis());
-
-                RequestBuffer.request(() -> event.getChannel().sendMessage(builder.build()));
-            }
-        }*/
+        }
     }
 
     public void registerCommand(Command command) {
