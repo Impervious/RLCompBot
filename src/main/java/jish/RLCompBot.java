@@ -39,9 +39,6 @@ public class RLCompBot {
         registerCommand(new CommandRanks());
         registerCommand(new CommandPlatforms());
 
-        /*
-          New Command nani
-        */
         registerCommand(new CommandRank());
 
         registerCommand(new CommandPC());
