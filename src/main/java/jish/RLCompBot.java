@@ -1,6 +1,7 @@
 package jish;
 
 import jish.commands.*;
+
 import sx.blah.discord.api.ClientBuilder;
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.api.events.EventSubscriber;
