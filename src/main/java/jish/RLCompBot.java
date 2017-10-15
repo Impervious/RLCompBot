@@ -102,48 +102,7 @@ public class RLCompBot {
                 String[] argsArr = args.isEmpty() ? new String[0] : args.split(" ");
                 command.get().execute(bot, client, argsArr, guild, msg, isPrivate);
             }
-        }
-
-        /*if (text.startsWith("!")) {
-            String cmd = text.substring(1).split(" ")[0].toLowerCase();
-
-            if(cmd.equalsIgnoreCase("bronze")) {
-                if(msg.getChannel().getStringID().equals("338051063720443915") || msg.getChannel().getStringID().equals("348989205193555968")) {
-                    try {
-                        event.getAuthor().addRole(event.getGuild().getRoleByID(Roles.BRONZE.ID));
-                        event.getAuthor().removeRole(event.getGuild().getRoleByID(Roles.UNRANKED.ID));
-                        Util.deleteMessage(msg);
-                        Util.sendMessage(msg.getChannel(), msg.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
-                    } catch(Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-            if(cmd.equalsIgnoreCase("silver")) {
-                if(msg.getChannel().getStringID().equals("338051063720443915") || msg.getChannel().getStringID().equals("348989205193555968")) {
-                    try {
-                        event.getAuthor().addRole(event.getGuild().getRoleByID(Roles.SILVER.ID));
-                        event.getAuthor().removeRole(event.getGuild().getRoleByID(Roles.UNRANKED.ID));
-                        event.getAuthor().removeRole(event.getGuild().getRoleByID(Roles.BRONZE.ID));
-                        Util.sendMessage(msg.getChannel(), msg.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
-                    } catch(Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-            if(cmd.equalsIgnoreCase("gold")) {
-                if(msg.getChannel().getStringID().equals("338051063720443915") || msg.getChannel().getStringID().equals("348989205193555968")) {
-                    try {
-                        event.getAuthor().addRole(event.getGuild().getRoleByID(Roles.GOLD.ID));
-                        event.getAuthor().removeRole(event.getGuild().getRoleByID(Roles.UNRANKED.ID));
-                        event.getAuthor().removeRole(event.getGuild().getRoleByID(Roles.SILVER.ID));
-                        Util.deleteMessage(msg);
-                        Util.sendMessage(msg.getChannel(), msg.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
-                    } catch(Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
+        }/*
             if(cmd.equalsIgnoreCase("platinum") || cmd.equalsIgnoreCase("plat")) {
                 if(msg.getChannel().getStringID().equals("338051063720443915") || msg.getChannel().getStringID().equals("348989205193555968")) {
                     try {
