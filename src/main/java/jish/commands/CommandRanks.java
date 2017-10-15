@@ -27,11 +27,11 @@ public class CommandRanks implements Command {
 
             builder.withAuthorName("RLCompBot");
             builder.withAuthorIcon("https://i.imgur.com/QRVYlDC.png");
-            builder.appendField("Available Commands", "Ranks:", false);
-            builder.appendField("!bronze", "!silver", true);
-            builder.appendField("!gold", "!platinum | !plat", false);
-            builder.appendField("!diamond | !dia | !diam", "!champion | !champ", false);
-            builder.appendField("!gc", "Let a staff member know if you have any questions!", false);
+            builder.appendField("Available Ranks", "Ranks:", false);
+            builder.appendField("bronze", "silver", true);
+            builder.appendField("gold", "platinum | plat", false);
+            builder.appendField("diamond | dia ", "champion | champ", false);
+            builder.appendField("gc", "Usage example: ```!rank diamond```", false);
             builder.withColor(255, 30, 229);
             builder.withTimestamp(System.currentTimeMillis());
 

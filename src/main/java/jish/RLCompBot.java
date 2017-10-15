@@ -29,7 +29,7 @@ public class RLCompBot {
 
     private List<Command> registeredCommands = new ArrayList<>();
 
-    private static final Pattern COMMAND_PATTERN = Pattern.compile("(?s)^!([^\\s]+) ?(.*)", Pattern.CASE_INSENSITIVE);
+    private static final Pattern COMMAND_PATTERN = Pattern.compile("^!([^\\s]+) ?(.*)", Pattern.CASE_INSENSITIVE);
 
     public static void main(String[] args) throws Exception {
         bot = new RLCompBot();
@@ -39,18 +39,14 @@ public class RLCompBot {
         registerCommand(new CommandRanks());
         registerCommand(new CommandPlatforms());
 
+        /*
+          New Command nani
+        */
+        registerCommand(new CommandRank());
+
         registerCommand(new CommandPC());
         registerCommand(new CommandXB1());
         registerCommand(new CommandPS4());
-
-        registerCommand(new CommandTest());
-        registerCommand(new CommandBronze());
-        registerCommand(new CommandSilver());
-        registerCommand(new CommandGold());
-        registerCommand(new CommandPlatinum());
-        registerCommand(new CommandDiamond());
-        registerCommand(new CommandChampion());
-
         registerCommand(new CommandTest());
 
         connect();
@@ -138,7 +134,8 @@ public class RLCompBot {
         builder.withAuthorName("RLCompBot");
         builder.withAuthorIcon("https://i.imgur.com/QRVYlDC.png");
         builder.appendField("Hello!", "Hello I am RLCompBot. I was created by <@73463573900173312>", false);
-        builder.appendField("What do I do?", "Right now I greet new members to the server and assign roles! I plan on maybe doing more in the future.", false);
+        builder.appendField("What do I do?", "Right now I greet new members to the server and assign roles and platforms! I plan on maybe doing more in the future.", false);
+        builder.appendField("Source Code: ", "[`GitHub`](https://github.com/Impervious/RLCompBot)", true);
         builder.withColor(255, 30, 229);
         builder.withTimestamp(System.currentTimeMillis());
 
