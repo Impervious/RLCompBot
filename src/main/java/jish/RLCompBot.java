@@ -35,7 +35,6 @@ public class RLCompBot {
     }
 
     public RLCompBot() {
-        //Commands
         registerCommand(new CommandRanks());
         registerCommand(new CommandPlatforms());
 
