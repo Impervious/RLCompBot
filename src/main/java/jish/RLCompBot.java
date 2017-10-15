@@ -41,7 +41,7 @@ public class RLCompBot {
         registerCommand(new CommandBronze());
         registerCommand(new CommandSilver());
         registerCommand(new CommandGold());
-        registerCommand(new CommandTest());
+        registerCommand(new CommandPlatinum());
         registerCommand(new CommandTest());
         registerCommand(new CommandTest());
         registerCommand(new CommandTest());
