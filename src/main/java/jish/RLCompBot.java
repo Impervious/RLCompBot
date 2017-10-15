@@ -1,5 +1,6 @@
 package jish;
 
+import jish.commands.*;
 import sx.blah.discord.api.ClientBuilder;
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.api.events.EventSubscriber;
@@ -11,7 +12,11 @@ import sx.blah.discord.handle.impl.events.shard.DisconnectedEvent;
 import sx.blah.discord.handle.obj.*;
 import sx.blah.discord.util.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RLCompBot {
 
@@ -21,11 +26,26 @@ public class RLCompBot {
     public static IGuild guild;
     public static IChannel channel;
 
+    private List<Command> registeredCommands = new ArrayList<>();
+
+    private static final Pattern COMMAND_PATTERN = Pattern.compile("(?s)^!([^\\s]+) ?(.*)", Pattern.CASE_INSENSITIVE);
+
     public static void main(String[] args) throws Exception {
         bot = new RLCompBot();
+
+
     }
 
     public RLCompBot() {
+        registerCommand(new CommandTest());
+        registerCommand(new CommandBronze());
+        registerCommand(new CommandTest());
+        registerCommand(new CommandTest());
+        registerCommand(new CommandTest());
+        registerCommand(new CommandTest());
+        registerCommand(new CommandTest());
+        registerCommand(new CommandTest());
+
         connect();
         client.getDispatcher().registerListener(this);
     }
@@ -63,9 +83,26 @@ public class RLCompBot {
     @EventSubscriber
     public void onMessageEvent(MessageReceivedEvent event) {
         IMessage msg = event.getMessage();
+        IGuild guild = null;
         String text = msg.getContent();
 
+        if(event.getMessage().getAuthor().isBot()) return;
 
+        boolean isPrivate = msg.getChannel().isPrivate();
+        if(!isPrivate) guild = msg.getGuild();
+
+        Matcher matcher = COMMAND_PATTERN.matcher(text);
+        if (matcher.matches()) {
+
+            String baseCommand = matcher.group(1).toLowerCase();
+            Optional<Command> command = registeredCommands.stream().filter(com -> com.getName().equalsIgnoreCase(baseCommand)).findFirst();
+
+            if (command.isPresent()) {
+                String args = matcher.group(2);
+                String[] argsArr = args.isEmpty() ? new String[0] : args.split(" ");
+                command.get().execute(bot, client, argsArr, guild, msg, isPrivate);
+            }
+        }
 
         /*if (text.startsWith("!")) {
             String cmd = text.substring(1).split(" ")[0].toLowerCase();
@@ -227,6 +264,13 @@ public class RLCompBot {
                 RequestBuffer.request(() -> event.getChannel().sendMessage(builder.build()));
             }
         }*/
+    }
+
+    public void registerCommand(Command command) {
+        if(!registeredCommands.contains(command)) {
+            registeredCommands.add(command);
+            System.out.println("Command registered: " + command.getName());
+        }
     }
 
     @EventSubscriber

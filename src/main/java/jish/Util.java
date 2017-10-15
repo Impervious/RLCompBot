@@ -40,13 +40,13 @@ public class Util {
         }
     }
 
-    static void sendMessage(IChannel channel, String message){
+    public static void sendMessage(IChannel channel, String message){
         try {
             channel.sendMessage(message);
         } catch(Exception ignored){}
     }
 
-    static void deleteMessage(IMessage message) {
+    public static void deleteMessage(IMessage message) {
         try {
             message.delete();
         } catch(Exception ignored) {}
