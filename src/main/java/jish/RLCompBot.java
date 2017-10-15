@@ -101,7 +101,7 @@ public class RLCompBot {
         if (matcher.matches()) {
 
             String baseCommand = matcher.group(1).toLowerCase();
-            Optional<Command> command = registeredCommands.stream().filter(com -> com.getName().equalsIgnoreCase(baseCommand)).findFirst();
+            Optional<Command> command = registeredCommands.stream().filter(com -> com.getName().equalsIgnoreCase(baseCommand) || (com.getAliases() != null && com.getAliases().contains(baseCommand))).findAny();
 
             if (command.isPresent()) {
                 String args = matcher.group(2);
