@@ -118,8 +118,8 @@ public class RLCompBot {
         IUser joinGuy = e.getUser();
         String user = e.getUser().getStringID();
         String server = e.getGuild().getStringID();
-        Util.sendMessage(e.getClient().getChannelByID(Long.parseLong("338051063720443915")), "Welcome to the RL Competitive server " + joinGuy.toString() + "!");
-        Util.sendMessage(e.getClient().getChannelByID(Long.parseLong("338051063720443915")), "To get started on the server please do !ranks and do the command that corresponds to your competitive rank!");
+        Util.sendMessage(e.getClient().getChannelByID(338051063720443915l), "Welcome to the RL Competitive server " + joinGuy.toString() + "!");
+        Util.sendMessage(e.getClient().getChannelByID(338051063720443915l), "To get started on the server please do !ranks and do the command that corresponds to your competitive rank!");
     }
 
     @EventSubscriber
