@@ -31,42 +31,49 @@ public class CommandRank implements Command {
                             message.getAuthor().removeRole(message.getGuild().getRoleByID(Roles.UNRANKED.ID));
                             Util.deleteMessage(message);
                             Util.sendMessage(message.getChannel(), message.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
+                            Util.sendMessage(message.getChannel(), "Please make sure to set your platform in #add-platform if you haven't already");
                         } else if(args[0].equalsIgnoreCase("silver")) {
                             message.getAuthor().addRole(message.getGuild().getRoleByID(Roles.SILVER.ID));
                             message.getAuthor().removeRole(message.getGuild().getRoleByID(Roles.UNRANKED.ID));
                             message.getAuthor().removeRole(message.getGuild().getRoleByID(Roles.BRONZE.ID));
                             Util.deleteMessage(message);
                             Util.sendMessage(message.getChannel(), message.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
+                            Util.sendMessage(message.getChannel(), "Please make sure to set your platform in #add-platform if you haven't already");
                         } else if(args[0].equalsIgnoreCase("gold")) {
                             message.getAuthor().addRole(message.getGuild().getRoleByID(Roles.GOLD.ID));
                             message.getAuthor().removeRole(message.getGuild().getRoleByID(Roles.UNRANKED.ID));
                             message.getAuthor().removeRole(message.getGuild().getRoleByID(Roles.SILVER.ID));
                             Util.deleteMessage(message);
                             Util.sendMessage(message.getChannel(), message.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
+                            Util.sendMessage(message.getChannel(), "Please make sure to set your platform in #add-platform if you haven't already");
                         } else if(args[0].equalsIgnoreCase("platinum") || args[0].equalsIgnoreCase("plat")) {
                             message.getAuthor().addRole(message.getGuild().getRoleByID(Roles.PLATINUM.ID));
                             message.getAuthor().removeRole(message.getGuild().getRoleByID(Roles.UNRANKED.ID));
                             message.getAuthor().removeRole(message.getGuild().getRoleByID(Roles.GOLD.ID));
                             Util.deleteMessage(message);
                             Util.sendMessage(message.getChannel(), message.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
+                            Util.sendMessage(message.getChannel(), "Please make sure to set your platform in #add-platform if you haven't already");
                         } else if(args[0].equalsIgnoreCase("diamond") || args[0].equalsIgnoreCase("dia")) {
                             message.getAuthor().addRole(message.getGuild().getRoleByID(Roles.DIAMOND.ID));
                             message.getAuthor().removeRole(message.getGuild().getRoleByID(Roles.UNRANKED.ID));
                             message.getAuthor().removeRole(message.getGuild().getRoleByID(Roles.PLATINUM.ID));
                             Util.deleteMessage(message);
                             Util.sendMessage(message.getChannel(), message.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
+                            Util.sendMessage(message.getChannel(), "Please make sure to set your platform in #add-platform if you haven't already");
                         } else if(args[0].equalsIgnoreCase("champion") || args[0].equalsIgnoreCase("champ")) {
                             message.getAuthor().addRole(message.getGuild().getRoleByID(Roles.CHAMPION.ID));
                             message.getAuthor().removeRole(message.getGuild().getRoleByID(Roles.UNRANKED.ID));
                             message.getAuthor().removeRole(message.getGuild().getRoleByID(Roles.DIAMOND.ID));
                             Util.deleteMessage(message);
                             Util.sendMessage(message.getChannel(), message.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
+                            Util.sendMessage(message.getChannel(), "Please make sure to set your platform in #add-platform if you haven't already");
                         } else if(args[0].equalsIgnoreCase("gc")) {
                             message.getAuthor().addRole(message.getGuild().getRoleByID(Roles.GRAND_CHAMPION.ID));
                             message.getAuthor().removeRole(message.getGuild().getRoleByID(Roles.UNRANKED.ID));
                             message.getAuthor().removeRole(message.getGuild().getRoleByID(Roles.CHAMPION.ID));
                             Util.deleteMessage(message);
                             Util.sendMessage(message.getChannel(), message.getAuthor() + ", you're all set! Please let a staff member know if you have any questions.");
+                            Util.sendMessage(message.getChannel(), "Please make sure to set your platform in #add-platform if you haven't already");
                         }
                     } else {
                         Util.sendMessage(message.getChannel(), "The correct format is ```!rank <rank name>```");
