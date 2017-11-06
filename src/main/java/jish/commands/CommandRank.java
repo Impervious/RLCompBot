@@ -4,6 +4,7 @@ import jish.RLCompBot;
 import jish.Roles;
 import jish.Util;
 import sx.blah.discord.api.IDiscordClient;
+import sx.blah.discord.handle.obj.IChannel;
 import sx.blah.discord.handle.obj.IGuild;
 import sx.blah.discord.handle.obj.IMessage;
 
@@ -22,8 +23,11 @@ public class CommandRank implements Command {
 
     @Override
     public void execute(RLCompBot bot, IDiscordClient client, String[] args, IGuild guild, IMessage message, boolean isPrivate) {
+        IChannel edit_rank = client.getChannelByID(RLCompBot.EDIT_RANK_ID);
+        IChannel newbies = client.getChannelByID(RLCompBot.NEWBIES_ID);
+
         if(!isPrivate) {
-            if (message.getChannel().getStringID().equals("338051063720443915") || message.getChannel().getStringID().equals("348989205193555968")) {
+            if (message.getChannel().equals(edit_rank) || message.getChannel().equals(newbies)) {
                 try {
                     if(args.length == 1) {
                         if (args[0].equalsIgnoreCase("bronze")) {

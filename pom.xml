@@ -20,7 +20,7 @@
         <dependency>
             <groupId>com.github.austinv11</groupId>
             <artifactId>Discord4j</artifactId>
-            <version>2.9.1</version>
+            <version>2.9.2</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -37,6 +37,12 @@
             <groupId>com.github.jreddit</groupId>
             <artifactId>jreddit</artifactId>
             <version>1.0.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.9.9-RC1</version>
         </dependency>
 
     </dependencies>

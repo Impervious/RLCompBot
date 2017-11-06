@@ -12,6 +12,7 @@ public enum Roles {
     PLATINUM(338052338851774476l, "Platinum"),
     DIAMOND(338052290093252608l, "Diamond"),
     CHAMPION(338052229460262912l, "Champion"),
+    LOL(357646849383071755l, "lol"),
     GRAND_CHAMPION(338051674729873419l, "Grand Champion");
 
     public long ID;

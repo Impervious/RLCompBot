@@ -1,8 +1,10 @@
 package jish;
 
 import org.apache.commons.io.FileUtils;
+import sx.blah.discord.api.internal.json.objects.EmbedObject;
 import sx.blah.discord.handle.obj.IChannel;
 import sx.blah.discord.handle.obj.IMessage;
+import sx.blah.discord.handle.obj.IPrivateChannel;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,6 +40,18 @@ public class Util {
             e.printStackTrace();
             return Optional.empty();
         }
+    }
+
+    public static void sendPM(IPrivateChannel pm, String message) {
+        try {
+            pm.sendMessage(message);
+        } catch(Exception ignored) {}
+    }
+
+    public static void sendMessage(IChannel channel, EmbedObject message){
+        try {
+            channel.sendMessage(message);
+        } catch(Exception ignored){}
     }
 
     public static void sendMessage(IChannel channel, String message){

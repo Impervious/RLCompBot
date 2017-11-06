@@ -13,6 +13,8 @@ import sx.blah.discord.handle.impl.events.shard.DisconnectedEvent;
 import sx.blah.discord.handle.obj.*;
 import sx.blah.discord.util.*;
 
+import org.reflections.Reflections;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -31,21 +33,32 @@ public class RLCompBot {
 
     private static final Pattern COMMAND_PATTERN = Pattern.compile("^!([^\\s]+) ?(.*)", Pattern.CASE_INSENSITIVE);
 
+    /*
+     * Admin User ID's
+     */
+
+    public static final long PRESS_A_ID = 336733516102500352L;
+    public static final long IMPERVIOUS_ID = 73463573900173312L;
+
+    /*
+     * Text Channel ID's
+     */
+
+    public static final long TEST_GENERAL_ID = 247394948331077632L;
+    public static final long STAFF_ID = 338103775350882304L;
+    public static final long EDIT_RANK_ID = 348989205193555968L;
+    public static final long ADD_PLATFORM_ID = 366773418822991873L;
+    public static final long ANNOUNCEMENTS_ID = 338419393245478912L;
+    public static final long NEWBIES_ID = 338051063720443915L;
+
+
     public static void main(String[] args) throws Exception {
         bot = new RLCompBot();
     }
 
     public RLCompBot() {
-        registerCommand(new CommandRanks());
-        registerCommand(new CommandPlatforms());
 
-        registerCommand(new CommandRank());
-
-        registerCommand(new CommandPC());
-        registerCommand(new CommandXB1());
-        registerCommand(new CommandPS4());
-        registerCommand(new CommandTest());
-
+        registerAllCommands();
         connect();
         client.getDispatcher().registerListener(this);
     }
@@ -105,37 +118,51 @@ public class RLCompBot {
         }
     }
 
-    public void registerCommand(Command command) {
-        if(!registeredCommands.contains(command)) {
-            registeredCommands.add(command);
-            System.out.println("Command registered: " + command.getName());
-        }
+    private void registerAllCommands() {
+        new Reflections("jish.commands").getSubTypesOf(Command.class).forEach(commandImpl -> {
+            try {
+                Command command = commandImpl.newInstance();
+                Optional<Command> existingCommand = registeredCommands.stream().filter(cmd -> cmd.getName().equalsIgnoreCase(command.getName())).findAny();
+                if (!existingCommand.isPresent()) {
+                    registeredCommands.add(command);
+                    System.out.println("Registered command: " + command.getName());
+                } else {
+                    System.out.println("Attempted to register two commands with the same name: " + existingCommand.get().getName());
+                    System.out.println("Existing: " + existingCommand.get().getClass().getName());
+                    System.out.println("Attempted: " + commandImpl.getName());
+                }
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     @EventSubscriber
     public void userJoined(UserJoinEvent e) throws DiscordException {
-        System.out.println("User joined");
         IUser joinGuy = e.getUser();
-        String user = e.getUser().getStringID();
-        String server = e.getGuild().getStringID();
-        Util.sendMessage(e.getClient().getChannelByID(338051063720443915l), "Welcome to the RL Competitive server " + joinGuy.toString() + "!");
-        Util.sendMessage(e.getClient().getChannelByID(338051063720443915l), "To get started on the server please do !ranks and do the command that corresponds to your competitive rank!");
+        Util.sendMessage(e.getClient().getChannelByID(NEWBIES_ID), "Welcome to the RL Competitive server " + joinGuy.toString() + "!");
+        Util.sendMessage(e.getClient().getChannelByID(NEWBIES_ID), "To get started on the server please do !ranks and do the command that corresponds to your competitive rank!");
     }
 
     @EventSubscriber
     public void botMention(MentionEvent e) {
         IMessage msg = e.getMessage();
+        if(msg.mentionsEveryone()) {
+            return;
+        } else {
+            EmbedBuilder builder = new EmbedBuilder();
 
-        EmbedBuilder builder = new EmbedBuilder();
+            builder.withAuthorName("RLCompBot");
+            builder.withAuthorIcon("https://i.imgur.com/QRVYlDC.png");
+            builder.appendField("Hello!", "Hello I am RLCompBot. I was created by <@73463573900173312>", false);
+            builder.appendField("What do I do?", "Right now I greet new members to the server and assign roles and platforms! I plan on maybe doing more in the future.", false);
+            builder.appendField("Source Code: ", "[`GitHub`](https://github.com/Impervious/RLCompBot)", true);
+            builder.withColor(255, 30, 229);
+            builder.withTimestamp(System.currentTimeMillis());
 
-        builder.withAuthorName("RLCompBot");
-        builder.withAuthorIcon("https://i.imgur.com/QRVYlDC.png");
-        builder.appendField("Hello!", "Hello I am RLCompBot. I was created by <@73463573900173312>", false);
-        builder.appendField("What do I do?", "Right now I greet new members to the server and assign roles and platforms! I plan on maybe doing more in the future.", false);
-        builder.appendField("Source Code: ", "[`GitHub`](https://github.com/Impervious/RLCompBot)", true);
-        builder.withColor(255, 30, 229);
-        builder.withTimestamp(System.currentTimeMillis());
-
-        RequestBuffer.request(() -> e.getChannel().sendMessage(builder.build()));
+            RequestBuffer.request(() -> e.getChannel().sendMessage(builder.build()));
+        }
     }
 }
