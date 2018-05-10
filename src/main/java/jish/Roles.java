@@ -2,6 +2,7 @@ package jish;
 
 public enum Roles {
 
+    SWITCH(444193359033139210l, "Switch"),
     PC(366768621608894466l, "PC"),
     XB1(366768142892007426l, "XB1"),
     PS4(366768620451266562l, "PS4"),

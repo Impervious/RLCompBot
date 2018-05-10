@@ -28,7 +28,7 @@ public class CommandSwitch implements Command {
         if(!isPrivate) {
             if(message.getChannel().equals(add_platform)) {
                 try {
-                    message.getAuthor().addRole(message.getGuild().getRoleByID(Roles.XB1.ID));
+                    message.getAuthor().addRole(message.getGuild().getRoleByID(Roles.SWITCH.ID));
                     Util.deleteMessage(message);
                     Util.sendMessage(message.getChannel(), message.getAuthor() + ", you are now in the Nintendo Switch group. Let a staff member know if you have any questions.");
                 } catch(Exception e) {
