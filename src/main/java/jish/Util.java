@@ -5,6 +5,10 @@ import sx.blah.discord.api.internal.json.objects.EmbedObject;
 import sx.blah.discord.handle.obj.IChannel;
 import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.handle.obj.IPrivateChannel;
+import sx.blah.discord.util.DiscordException;
+import sx.blah.discord.util.MessageBuilder;
+import sx.blah.discord.util.MissingPermissionsException;
+import sx.blah.discord.util.RequestBuffer;
 
 import java.io.File;
 import java.io.IOException;
@@ -40,6 +44,19 @@ public class Util {
             e.printStackTrace();
             return Optional.empty();
         }
+    }
+
+    public static IMessage sendEmbed(IChannel channel, EmbedObject embedObject) {
+        RequestBuffer.RequestFuture<IMessage> future = RequestBuffer.request(() -> {
+            try {
+                return new MessageBuilder(RLCompBot.getInstance().getClient()).withEmbed(embedObject)
+                        .withChannel(channel).send();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        });
+        return future.get();
     }
 
     public static void sendPM(IPrivateChannel pm, String message) {

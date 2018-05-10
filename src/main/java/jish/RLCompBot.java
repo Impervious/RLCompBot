@@ -24,7 +24,6 @@ import java.util.regex.Pattern;
 public class RLCompBot {
 
     public static RLCompBot bot;
-
     public static IDiscordClient client;
     public static IGuild guild;
     public static IChannel channel;
@@ -63,7 +62,6 @@ public class RLCompBot {
     }
 
     public RLCompBot() {
-
         registerAllCommands();
         connect();
         client.getDispatcher().registerListener(this);
@@ -85,6 +83,14 @@ public class RLCompBot {
         } catch (DiscordException e) {
             e.printStackTrace();
         }
+    }
+
+    public static RLCompBot getInstance() {
+        return bot;
+    }
+
+    public static IDiscordClient getClient() {
+        return client;
     }
 
     @EventSubscriber
