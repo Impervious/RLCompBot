@@ -8,18 +8,17 @@ import sx.blah.discord.handle.obj.IChannel;
 import sx.blah.discord.handle.obj.IGuild;
 import sx.blah.discord.handle.obj.IMessage;
 
-import java.util.Arrays;
 import java.util.List;
 
-public class CommandPS4 implements Command  {
+public class CommandSwitch implements Command {
     @Override
     public String getName() {
-        return "ps4";
+        return "switch";
     }
 
     @Override
     public List<String> getAliases() {
-        return Arrays.asList("playstation", "ps");
+        return null;
     }
 
     @Override
@@ -31,7 +30,7 @@ public class CommandPS4 implements Command  {
                 try {
                     message.getAuthor().addRole(message.getGuild().getRoleByID(Roles.XB1.ID));
                     Util.deleteMessage(message);
-                    Util.sendMessage(message.getChannel(), message.getAuthor() + ", you are now in the PlayStation group. Let a staff member know if you have any questions.");
+                    Util.sendMessage(message.getChannel(), message.getAuthor() + ", you are now in the Nintendo Switch group. Let a staff member know if you have any questions.");
                 } catch(Exception e) {
                     e.printStackTrace();
                 }
