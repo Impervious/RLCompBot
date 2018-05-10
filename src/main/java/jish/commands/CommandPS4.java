@@ -8,6 +8,7 @@ import sx.blah.discord.handle.obj.IChannel;
 import sx.blah.discord.handle.obj.IGuild;
 import sx.blah.discord.handle.obj.IMessage;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class CommandPS4 implements Command  {
@@ -18,7 +19,7 @@ public class CommandPS4 implements Command  {
 
     @Override
     public List<String> getAliases() {
-        return null;
+        return Arrays.asList("playstation", "ps");
     }
 
     @Override

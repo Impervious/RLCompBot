@@ -1,11 +1,11 @@
 package jish.commands;
 
 import jish.RLCompBot;
+import jish.Util;
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.handle.obj.IGuild;
 import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.util.EmbedBuilder;
-import sx.blah.discord.util.RequestBuffer;
 
 import java.util.List;
 
@@ -35,7 +35,7 @@ public class CommandRanks implements Command {
             builder.withColor(255, 30, 229);
             builder.withTimestamp(System.currentTimeMillis());
 
-            RequestBuffer.request(() -> message.getChannel().sendMessage(builder.build()));
+            Util.sendEmbed(message.getChannel(), builder.build());
         }
     }
 }

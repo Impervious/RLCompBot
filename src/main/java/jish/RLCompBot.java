@@ -24,7 +24,6 @@ import java.util.regex.Pattern;
 public class RLCompBot {
 
     public static RLCompBot bot;
-
     public static IDiscordClient client;
     public static IGuild guild;
     public static IChannel channel;
@@ -41,15 +40,21 @@ public class RLCompBot {
     public static final long IMPERVIOUS_ID = 73463573900173312L;
 
     /*
-     * Text Channel ID's
+     * Bot Testing Server Channel ID
      */
 
     public static final long TEST_GENERAL_ID = 247394948331077632L;
+
+    /*
+     * RLComp Channel ID's
+     */
+
     public static final long STAFF_ID = 338103775350882304L;
     public static final long EDIT_RANK_ID = 348989205193555968L;
     public static final long ADD_PLATFORM_ID = 366773418822991873L;
     public static final long ANNOUNCEMENTS_ID = 338419393245478912L;
     public static final long NEWBIES_ID = 338051063720443915L;
+    public static final long BOT_TEST_ID = 443883538417451029L;
 
 
     public static void main(String[] args) throws Exception {
@@ -57,7 +62,6 @@ public class RLCompBot {
     }
 
     public RLCompBot() {
-
         registerAllCommands();
         connect();
         client.getDispatcher().registerListener(this);
@@ -79,6 +83,14 @@ public class RLCompBot {
         } catch (DiscordException e) {
             e.printStackTrace();
         }
+    }
+
+    public static RLCompBot getInstance() {
+        return bot;
+    }
+
+    public static IDiscordClient getClient() {
+        return client;
     }
 
     @EventSubscriber
