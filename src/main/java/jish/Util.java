@@ -49,7 +49,7 @@ public class Util {
     public static IMessage sendEmbed(IChannel channel, EmbedObject embedObject) {
         RequestBuffer.RequestFuture<IMessage> future = RequestBuffer.request(() -> {
             try {
-                return new MessageBuilder(RLCompBot.getInstance().getClient()).withEmbed(embedObject)
+                return new MessageBuilder(RLCompBot.client).withEmbed(embedObject)
                         .withChannel(channel).send();
             } catch (Exception e) {
                 e.printStackTrace();

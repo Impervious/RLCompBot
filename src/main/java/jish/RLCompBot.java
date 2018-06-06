@@ -174,7 +174,7 @@ public class RLCompBot {
             builder.withColor(255, 30, 229);
             builder.withTimestamp(System.currentTimeMillis());
 
-            RequestBuffer.request(() -> e.getChannel().sendMessage(builder.build()));
+            Util.sendEmbed(msg.getChannel(), builder.build());
         }
     }
 }
