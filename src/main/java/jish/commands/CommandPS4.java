@@ -29,7 +29,7 @@ public class CommandPS4 implements Command  {
         if(!isPrivate) {
             if(message.getChannel().equals(add_platform)) {
                 try {
-                    message.getAuthor().addRole(message.getGuild().getRoleByID(Roles.XB1.ID));
+                    message.getAuthor().addRole(message.getGuild().getRoleByID(Roles.PS4.ID));
                     Util.deleteMessage(message);
                     Util.sendMessage(message.getChannel(), message.getAuthor() + ", you are now in the PlayStation group. Let a staff member know if you have any questions.");
                 } catch(Exception e) {

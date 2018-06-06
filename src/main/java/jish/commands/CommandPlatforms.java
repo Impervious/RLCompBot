@@ -28,9 +28,10 @@ public class CommandPlatforms implements Command {
             builder.withAuthorName("RLCompBot");
             builder.withAuthorIcon("https://i.imgur.com/QRVYlDC.png");
             builder.appendField("Available Platforms", "Platforms:", false);
-            builder.appendField("!pc", "Grants you the PC group", true);
-            builder.appendField("!xb1 | !xbox | !xbone", "Grants you the Xbox group", false);
-            builder.appendField("!ps4 | !playstation | !ps", "Grants you the PS4 group", false);
+            builder.appendField("!pc", "Places you in the PC group", true);
+            builder.appendField("!xb1 | !xbox | !xbone", "Places you in the Xbox group", false);
+            builder.appendField("!ps4 | !playstation | !ps", "Places you in the PS4 group", false);
+            builder.appendField("!switch | !nintendo", "Places you in the Nintendo Switch group", false);
             builder.withColor(255, 30, 229);
             builder.withTimestamp(System.currentTimeMillis());
 
